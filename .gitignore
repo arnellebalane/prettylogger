@@ -1,0 +1,17 @@
+# ignore vim .swp files
+*.swp
+
+# ignore python-compiled files
+*.pyc
+
+# ignore buildout-related files
+*.pyo
+.installed.cfg
+bin/
+eggs/
+develop-eggs/
+parts/
+dist/
+build/
+downloads/
+src/*.egg-info
