@@ -9,12 +9,19 @@ __options = {
 }
 
 
-def prettify(thing):
+def prettify(thing, depth=4):
     if type(thing) is dict:
-        pass
+        formatted = '{'
+        for key in thing:
+            formatted += '\n' + (' ' * depth) 
+            formatted += key + ': ' + prettify(thing[key], depth + 4) + ','
+        formatted = formatted[:-1]
+        formatted += '\n' + (' ' * (depth - 4)) + '}'
+        return formatted
     return str(thing)
 
 
 def log(thing, options=''):
-    prefix = ''.join([__options[option] for option in options if option in __options])
+    options = [__options[option] for option in options if option in __options]
+    prefix = ''.join(options)
     print prefix + prettify(thing) + __options['x']
