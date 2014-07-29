@@ -25,6 +25,14 @@ def prettify(thing, depth=4):
             formatted += prettify(element, depth + 4) + ','
         formatted += '\n' + (' ' * (depth - 4)) + ')'
         return formatted
+    elif type(thing) is list:
+        formatted = '['
+        for element in thing:
+            formatted += '\n' + (' ' * depth)
+            formatted += prettify(element, depth + 4) + ','
+        formatted = formatted[:-1]
+        formatted += '\n' + (' ' * (depth - 4)) + ']'
+        return formatted
     return str(thing)
 
 

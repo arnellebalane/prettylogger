@@ -28,3 +28,13 @@ class TestPrettyLogger(TestCase):
         given = {'firstname': 'arnelle', 'lastname': 'balane'}
         expected = '{\n    lastname: balane,\n    firstname: arnelle\n}'
         self.assertEqual(expected, prettify(given))
+
+    def test_prettify_with_tuples(self):
+        given = (1, 2, 3)
+        expected = '(\n    1,\n    2,\n    3,\n)'
+        self.assertEqual(expected, prettify(given))
+
+    def test_prettify_with_lists(self):
+        given = [1, 2, 3]
+        expected = '[\n    1,\n    2,\n    3\n]'
+        self.assertEqual(expected, prettify(given))
