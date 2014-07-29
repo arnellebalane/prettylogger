@@ -1,0 +1,8 @@
+language: python
+python: "2.7"
+install: 
+    - sudo pip install virtualenv
+    - virtualenv prettylogger-env
+    - prettylogger-env/bin/python bootstrap.py
+    - bin/buildout
+script: bin/test
