@@ -38,3 +38,13 @@ class TestPrettyLogger(TestCase):
         given = [1, 2, 3]
         expected = '[\n    1,\n    2,\n    3\n]'
         self.assertEqual(expected, prettify(given))
+
+    def test_prettify_with_mixed_types(self):
+        given = [1, 'string', {'firstname': 'arnelle', 'lastname': 'balane', \
+                 'numbers': (1, 2, 3, 4)}, ('a', 'b', 'c')]
+        expected = '[\n    1,\n    string,\n    {\n        lastname: balane,'
+        expected += '\n        numbers: (\n            1,\n            2,'
+        expected += '\n            3,\n            4,\n        ),'
+        expected += '\n        firstname: arnelle\n    },\n    ('
+        expected += '\n        a,\n        b,\n        c,\n    )\n]'
+        self.assertEqual(expected, prettify(given))
